@@ -32,7 +32,13 @@ Hint #2: you'll need to use the `math` object for parts of this calculation!
 When your math is correct, monthlyRate will equal 1073.64
 */
 
-let monthlyRate = principal * [ monthlyInterestRate * Math.pow( 1 + monthlyInterestRate,periods) ] / [ Math.pow(1 + monthlyInterestRate,periods) - 1 ];
+let numerator = monthlyInterestRate * Math.pow((1 + monthlyInterestRate),periods);
+
+let denominator = Math.pow(1 + monthlyInterestRate,periods) - 1;
+
+//let monthlyRate = principal * [ monthlyInterestRate * Math.pow( 1 + monthlyInterestRate,periods) ] / [ Math.pow(1 + monthlyInterestRate,periods) - 1 ];
+
+let monthlyRate = principal * (numerator / denominator);
 
 console.log(monthlyRate);
 
@@ -56,11 +62,21 @@ mortgageCalculator();
 /* Substitute the variables in your functions for parameters such that you can substitute `P`, `I`, and `N` when you call the function.
 
 For example,
-mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
+mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64 <-- Noticed one extra 0 in P
 */
 
 
+//Stuck right now. Is that calculation given above wrong? //////////////////////////////////////////////////
 
+function mortgageCalculator2 (p, ir, n) {
+
+    let monthlyRate = p * [ ir * Math.pow( 1 + ir,n) ] / [ Math.pow(1 + ir,n) - 1 ];   
+    
+    return monthlyRate;
+
+}
+
+console.log(mortgageCalculator2(200000, 0.05/12, 360));
 
 
 // 🏡 Task 5: Conditionals
@@ -69,7 +85,27 @@ mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
 
+function mortgageCalculator3 (p, ir, n, creditScore) {
 
+    let monthlyRate = p * [ ir * Math.pow( 1 + ir,n) ] / [ Math.pow(1 + ir,n) - 1 ];   
+
+    let newir;
+    
+    if (creditScore > 740) {
+
+        newir = ir - (ir*0.05);
+
+    } else if (creditScore<740) {
+
+        newir = ir + (ir*0.05);
+
+    }
+
+    return newir;
+
+}
+
+console.log(mortgageCalculator3(200000, 0.05/12, 360, 600));
 
 
 // 🏡 Task 6: Loops
@@ -88,7 +124,11 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
+function variableInterestRate () {
 
+
+
+}
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
