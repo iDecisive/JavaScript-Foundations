@@ -134,14 +134,12 @@ function variableInterestRate (p, ir, n) {
     
     let chngIR = 0;
 
-    console.log("task 6 - monthly rate before for loop: " + mortgageCalculator2(p,ir,n));
-
     for (i=0; i<9; i++) {
 
 
         chngIR += 0.005; //Change IR amount
 
-        console.log("task 6: Daniel, with an interest rate of " + (ir + chngIR) + ", your monthly rate is " + mortgageCalculator2(p,(ir+chngIR),n)); //Function inside here returns the monthly rate
+        console.log("task 6: Daniel, with an interest rate of " + (ir + chngIR) + " (yearly), your monthly rate is " + mortgageCalculator2(p,(ir+chngIR),n)); //Function inside here returns the monthly rate
 
     }
 
@@ -164,3 +162,19 @@ variableInterestRate(200000, 0.04, 360);
 
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
+
+let rates = [0.05,0.06,0.07,0.08,0.09,0.1]
+
+function variableInterestRate2 (p, ir, n) {
+
+    let i;
+
+    for (i=0; i<ir.length; i++) {
+
+        console.log("Stretch: Daniel, with an interest rate of " + ir[i] + " (yearly), your monthly rate is " + mortgageCalculator2(p,ir[i],n)); //Function inside here returns the monthly rate
+
+    }
+
+}
+
+variableInterestRate2(200000, rates, 360);
