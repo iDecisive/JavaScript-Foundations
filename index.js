@@ -40,7 +40,7 @@ let denominator = Math.pow(1 + monthlyInterestRate,periods) - 1;
 
 let monthlyRate = principal * (numerator / denominator);
 
-console.log(monthlyRate);
+console.log("task 2: " + monthlyRate);
 
 
 // 🏡 Task 3: Function
@@ -50,7 +50,7 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 */
 
 function mortgageCalculator () {
-    console.log("Daniel, your monthly rate is " + monthlyRate);
+    console.log("Task 3: Daniel, your monthly rate is " + monthlyRate);
 
 }
 
@@ -70,13 +70,15 @@ mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64 <-- Noticed on
 
 function mortgageCalculator2 (p, ir, n) {
 
-    let monthlyRate = p * [ ir * Math.pow( 1 + ir,n) ] / [ Math.pow(1 + ir,n) - 1 ];   
+    let mIR = (ir / 12); //monthly IR
+
+    let monthlyRate = p * [ mIR * Math.pow( 1 + mIR,n) ] / [ Math.pow(1 + mIR,n) - 1 ];   
     
     return monthlyRate;
 
 }
 
-console.log(mortgageCalculator2(200000, 0.05/12, 360));
+console.log("task 4: " + mortgageCalculator2(200000, 0.05, 360));
 
 
 // 🏡 Task 5: Conditionals
@@ -87,7 +89,9 @@ Then, add control flow within your function such that IF creditScore is above 74
 
 function mortgageCalculator3 (p, ir, n, creditScore) {
 
-    let monthlyRate = p * [ ir * Math.pow( 1 + ir,n) ] / [ Math.pow(1 + ir,n) - 1 ];   
+    let mIR = (ir / 12); //monthly IR
+
+    let monthlyRate = p * [ mIR * Math.pow( 1 + mIR,n) ] / [ Math.pow(1 + mIR,n) - 1 ];   
 
     let newir;
     
@@ -105,7 +109,7 @@ function mortgageCalculator3 (p, ir, n, creditScore) {
 
 }
 
-console.log(mortgageCalculator3(200000, 0.05/12, 360, 600));
+console.log( "task 5: " + mortgageCalculator3(200000, 0.05, 360, 600));
 
 
 // 🏡 Task 6: Loops
@@ -124,11 +128,26 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
-function variableInterestRate () {
+function variableInterestRate (p, ir, n) {
+
+    let i;
+    
+    let chngIR = 0;
+
+    console.log("task 6 - monthly rate before for loop: " + mortgageCalculator2(p,ir,n));
+
+    for (i=0; i<9; i++) {
 
 
+        chngIR += 0.005; //Change IR amount
+
+        console.log("task 6: Daniel, with an interest rate of " + (ir + chngIR) + ", your monthly rate is " + mortgageCalculator2(p,(ir+chngIR),n)); //Function inside here returns the monthly rate
+
+    }
 
 }
+
+variableInterestRate(200000, 0.04, 360);
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
