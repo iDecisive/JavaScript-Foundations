@@ -71,14 +71,15 @@ mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64 <-- Noticed on
 function mortgageCalculator2 (p, ir, n) {
 
     let mIR = (ir / 12); //monthly IR
+    mperiod = n*12; //converting number of years to number of months
 
-    let monthlyRate = p * [ mIR * Math.pow( 1 + mIR,n) ] / [ Math.pow(1 + mIR,n) - 1 ];   
+    let monthlyRate = p * [ mIR * Math.pow( 1 + mIR,mperiod) ] / [ Math.pow(1 + mIR,mperiod) - 1 ];   
     
     return monthlyRate;
 
 }
 
-console.log("task 4: " + mortgageCalculator2(200000, 0.05, 360));
+console.log("task 4: " + mortgageCalculator2(200000, 0.05, 30));
 
 
 // 🏡 Task 5: Conditionals
@@ -90,8 +91,9 @@ Then, add control flow within your function such that IF creditScore is above 74
 function mortgageCalculator3 (p, ir, n, creditScore) {
 
     let mIR = (ir / 12); //monthly IR
+    mperiod = n*12; //converting number of years to number of months
 
-    let monthlyRate = p * [ mIR * Math.pow( 1 + mIR,n) ] / [ Math.pow(1 + mIR,n) - 1 ];   
+    let monthlyRate = p * [ mIR * Math.pow( 1 + mIR,mperiod) ] / [ Math.pow(1 + mIR,mperiod) - 1 ];   
 
     let newir;
     
@@ -109,7 +111,7 @@ function mortgageCalculator3 (p, ir, n, creditScore) {
 
 }
 
-console.log( "task 5: " + mortgageCalculator3(200000, 0.05, 360, 600));
+console.log( "task 5: " + mortgageCalculator3(200000, 0.05, 30, 600));
 
 
 // 🏡 Task 6: Loops
@@ -145,7 +147,7 @@ function variableInterestRate (p, ir, n) {
 
 }
 
-variableInterestRate(200000, 0.04, 360);
+variableInterestRate(200000, 0.04, 30);
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
@@ -177,4 +179,4 @@ function variableInterestRate2 (p, ir, n) {
 
 }
 
-variableInterestRate2(200000, rates, 360);
+variableInterestRate2(200000, rates, 30);
